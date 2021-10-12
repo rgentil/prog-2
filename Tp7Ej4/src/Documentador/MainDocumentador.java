@@ -74,7 +74,8 @@ public class MainDocumentador {
 		System.out.println("\nTodos los documentos cuyo contenido tenga una palabra o frase dada. \n" + h1.getDocumentosPorContenido("Al cerro"));
 		System.out.println("\nTodos los documentos cuyo contenido tenga al menos 20 palabras. \n" + h1.getDocumentosPorContenidoCantPalabras(3));
 		
-		System.out.println("\nCualquier combinación lógica de las formas anteriores. ?????????????????? \n");
+		System.out.println("\nCualquier combinación lógica de las formas anteriores. \n" + 
+		h1.getDocumentosPorAutorPorContenidoCantPalabras("Caminante", 4));
 		
 	}
 

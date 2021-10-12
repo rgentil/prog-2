@@ -2,6 +2,8 @@ package Documentador;
 
 import java.util.List;
 
+import Criterios.Criterio;
+import Criterios.CriterioCompuestoAnd;
 import Criterios.CriterioPorAutor;
 import Criterios.CriterioPorContenido;
 import Criterios.CriterioPorContenidoCantPalabras;
@@ -73,6 +75,15 @@ public class Historiador {
 	public List<Documento> getDocumentosPorContenidoCantPalabras(int cantPalabras) {
 		System.out.println("\n Cantidad de Palabra del contenido = " + cantPalabras + "\n");
 		return documentos.buscar(new CriterioPorContenidoCantPalabras(cantPalabras));
+	}
+	
+	public List<Documento> getDocumentosPorAutorPorContenidoCantPalabras(String autor, int cantPalabras) {
+		System.out.println("\n Compuesto autor = " + autor + " cantidad palabras = " + cantPalabras + "n");
+		Criterio pa = new CriterioPorAutor(autor.toUpperCase());
+		Criterio pccp = new CriterioPorContenidoCantPalabras(cantPalabras);
+		
+		return documentos.buscar(new CriterioCompuestoAnd(pa , 
+										new CriterioCompuestoAnd(pccp, null) ) );
 	}
 	
 	public void addDocumento (Documento d) {
