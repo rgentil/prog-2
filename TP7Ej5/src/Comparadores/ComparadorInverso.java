@@ -13,7 +13,7 @@ public class ComparadorInverso extends Comparador{
 
 	@Override
 	public int compare(Planta p1, Planta p2) {
-		return -1* c1.compare(p1, p2);
+		return - c1.compare(p1, p2);
 	}
 	
 
