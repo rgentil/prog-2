@@ -1,5 +1,9 @@
 package Vivero;
 
+import java.util.Collections;
+
+import Comparadores.ComparadorPorNombreVulgar;
+
 /*
 	El sistema debe ser útil para los administradores del vivero para, por ejemplo, cuando llega
 	un cliente poder ofrecerle las plantas que cumplen con sus requerimientos:
@@ -67,6 +71,9 @@ public class MainVivero {
 
 		//g) Cualquier combinación lógica de las formas anteriores
 		//???
+		
+		Collections.sort(v1.getPlantas(), new ComparadorPorNombreVulgar());
+		System.out.println("Listado completo de plantas ordenadas " + v1.getPlantas());
 	}
 
 }

@@ -1,6 +1,7 @@
 package Vivero;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /*
@@ -77,10 +78,36 @@ public class Planta implements Comparable<Planta> {
 		this.nombreCientifico = nombreCientifico;
 	}
 
-	public List<String> getNombreVulgares() {
-		return new ArrayList<>(nombreVulgares);
+	public boolean contieneNombreVulgar(String filtro) {
+		for (String nombre : this.nombreVulgares) {
+			if (nombre.equals(filtro)){
+				return true;
+			}
+		}		
+		return false;
 	}
-
+	
+	private List<String> listaVulgaresOrdenados(){
+		List<String> resultado = new ArrayList<>(this.nombreVulgares);
+		Collections.sort(resultado);
+		return resultado;
+	}
+	
+	public int compararListaVulgares(Planta p1) {
+		List<String> lnv1 = this.listaVulgaresOrdenados();
+		List<String> lnv2 = p1.listaVulgaresOrdenados();		
+		int aux = 0;
+		for (String n1 : lnv1) {
+			for (String n2 : lnv2) {
+				aux = n1.compareTo(n2);
+				if (aux != 0) {
+					return aux;
+				}
+			}
+		}
+		return aux;
+	}
+	
 	public void addNombreVulgar(String nombreVulgare) {
 		this.nombreVulgares.add(nombreVulgare);
 	}
