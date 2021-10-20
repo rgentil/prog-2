@@ -1,0 +1,20 @@
+Una empresa multinacional se organiza en sucursales
+regionales (ej suc. regional Argentina, España, etc.) y sus
+sucursales regionales se componen de grupos de trabajo
+ubicados en distintas ciudades dentro de la sucursal
+regional, y cada uno de ellos se compone a su vez por
+cierto número de empleados.
+
+Cada uno de los empleados posee un apellido, un nombre, una especialidad y un sueldo.
+
+Se debe responder a los siguientes servicios:
+• Determinar la cantidad total de empleados
+dependientes de la empresa, sucursal, o grupo.
+• Obtener el gasto en sueldos de un empleado, grupo,
+sucursal o empresa. En el caso de grupos, sucursales
+o empresas, el gasto en sueldos es la suma de los
+sueldos de todos los empleados que posee (directa o
+indirectamente)
+• Obtener todos los empleados de una empresa,
+sucursal o grupo que tienen una determinada
+especialidad.
