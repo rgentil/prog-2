@@ -1,5 +1,10 @@
 package SistemaArchivo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Filtros.Criterio;
+
 public class Link extends ArchivoSistema {
 
 	//Los links son vínculos a otro archivo o directorio y tienen un nombre, una fecha de creación 
@@ -28,6 +33,14 @@ public class Link extends ArchivoSistema {
 	@Override
 	public int getCantidadElementos() {
 		return 1;
+	}
+	
+	@Override
+	public List<ArchivoSistema> buscar(Criterio c) {
+		List<ArchivoSistema> resultado = new ArrayList<ArchivoSistema>();
+		if (c.cumple(this))
+			resultado.add(this);
+		return resultado;
 	}
 	
 	public ArchivoSistema getArchivo() {

@@ -1,4 +1,5 @@
 package SistemaArchivo;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,11 +7,16 @@ import Filtros.Criterio;
 
 public class Carpeta extends ArchivoSistema {
 
-	private List<ArchivoSistema> archivos;
+	protected List<ArchivoSistema> archivos;
 	
 	public Carpeta(String nombre) {
 		super(nombre);
 		this.archivos = new ArrayList<ArchivoSistema>();
+	}
+	
+	public void add(ArchivoSistema a) {
+		archivos.add(a);
+		setFechaModificacion(LocalDate.now());
 	}
 
 	@Override
@@ -54,6 +60,6 @@ public class Carpeta extends ArchivoSistema {
 		return resultado;
 	}
 	
-
+	
 
 }

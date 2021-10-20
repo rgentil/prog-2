@@ -2,16 +2,16 @@ package Filtros;
 
 import SistemaArchivo.ArchivoSistema;
 
-public class CriterioPorNombre extends Criterio{
+public class CriterioPorContieneNombre extends Criterio{
 
 	private String filtroNombre;
 	
-	public CriterioPorNombre(String filtro) {
+	public CriterioPorContieneNombre(String filtro) {
 		this.filtroNombre = filtro; 
 	}
 	
 	public boolean cumple(ArchivoSistema a) {
-		return a.getNombre().equals(filtroNombre);
+		return a.getNombre().contains(filtroNombre);
 	}
 
 }

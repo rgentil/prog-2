@@ -26,7 +26,9 @@
 	Un link cumple con el criterio de búsqueda por sí mismo, sin tener en cuenta el elemento que apunta.
 	
 	A la hora de realizar una búsqueda, el usuario puede especificar también un criterio de orden
-	en el que quiere que se retornen los elementos resultantes. Por ejemplo, ordenados
+	en el que quiere que se retornen los elementos resultantes.
+	
+	 Por ejemplo, ordenados
 	ascendentemente por fecha de creación y luego por nombre, ordenados descendentemente por
 	tamaño, luego por fecha de creación y finalmente por nombre descendente, entre otros
 	posibles criterios de ordenamiento.

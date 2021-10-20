@@ -8,11 +8,13 @@ public abstract class ArchivoSistema {
 
 	private String nombre;
 	private LocalDate fechaCreacion;
+	private LocalDate fechaModificacion;
 	
 	public ArchivoSistema(String nombre) {
 		super();
 		this.nombre = nombre;
 		this.fechaCreacion = LocalDate.now();
+		this.fechaModificacion = null;
 	}
 	
 	public abstract double getTamanio();
@@ -33,6 +35,14 @@ public abstract class ArchivoSistema {
 
 	public LocalDate getFechaCreacion() {
 		return fechaCreacion;
+	}
+	
+	public LocalDate getFechaModificacion() {
+		return fechaModificacion;
+	}
+
+	public void setFechaModificacion(LocalDate fechaModificacion) {
+		this.fechaModificacion = fechaModificacion;
 	}
 
 }

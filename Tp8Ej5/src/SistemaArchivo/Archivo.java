@@ -1,5 +1,10 @@
 package SistemaArchivo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Filtros.Criterio;
+
 public class Archivo extends ArchivoSistema{
 
 	private double tamanio;
@@ -22,6 +27,14 @@ public class Archivo extends ArchivoSistema{
 	@Override
 	public int getCantidadElementos() {
 		return this.getCantidadDeArchivos();
+	}
+	
+	@Override
+	public List<ArchivoSistema> buscar(Criterio c) {
+		List<ArchivoSistema> resultado = new ArrayList<ArchivoSistema>();
+		if (c.cumple(this))
+			resultado.add(this);
+		return resultado;
 	}
 
 
