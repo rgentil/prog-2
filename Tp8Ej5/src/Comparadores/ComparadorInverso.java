@@ -1,12 +1,14 @@
 package Comparadores;
 
+import java.util.Comparator;
+
 import SistemaArchivo.ArchivoSistema;
 
-public class ComparadorInverso extends Comparador{
+public class ComparadorInverso implements Comparator<ArchivoSistema>{
 
-	private Comparador c;
+	private Comparator<ArchivoSistema> c;
 
-	public ComparadorInverso(Comparador c) {
+	public ComparadorInverso(Comparator<ArchivoSistema> c) {
 		super();
 		this.c = c;
 	}

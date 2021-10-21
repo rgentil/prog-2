@@ -1,8 +1,10 @@
 package Comparadores;
 
+import java.util.Comparator;
+
 import SistemaArchivo.ArchivoSistema;
 
-public class ComparadorPorFechaCreacion extends Comparador {
+public class ComparadorPorFechaCreacion implements Comparator<ArchivoSistema> {
 
 	@Override
 	public int compare(ArchivoSistema a1, ArchivoSistema a2) {
