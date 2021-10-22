@@ -1,11 +1,12 @@
-package Filtros;
+package Criterios;
 
-import SistemaArchivo.ArchivoSistema;
+import Principal.Vendedor;
 
 public class CriterioAND extends Criterio{
 	
 	private Criterio c1;
 	private Criterio c2;
+	
 	
 	public CriterioAND(Criterio c1, Criterio c2) {
 		super();
@@ -13,9 +14,9 @@ public class CriterioAND extends Criterio{
 		this.c2 = c2;
 	}
 
-	@Override
-	public boolean cumple(ArchivoSistema a) {
-		return c1.cumple(a) && c2.cumple(a); 
-	}		
-
+	public boolean cumple(Vendedor vendedor) {
+		return c1.cumple(vendedor) && c2.cumple(vendedor);
+ 	}
+	
+		
 }

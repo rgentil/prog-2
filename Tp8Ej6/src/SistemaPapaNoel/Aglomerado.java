@@ -3,6 +3,8 @@ package SistemaPapaNoel;
 import java.util.ArrayList;
 import java.util.List;
 
+import Criterios.Criterio;
+
 public class Aglomerado extends EntidadNavidad {
 
 	private String nombre;
@@ -22,10 +24,10 @@ public class Aglomerado extends EntidadNavidad {
 	}
 	
 	@Override
-	public List<Carta> getCartasRecibidasPorRegalo(String regalo) {
+	public List<Carta> getCartasRecibidasPorRegalo(Criterio c) {
 		List<Carta> resultado = new ArrayList<Carta>();
 		for(EntidadNavidad e : entidades) {
-			resultado.addAll(e.getCartasRecibidasPorRegalo(regalo));	
+			resultado.addAll(e.getCartasRecibidasPorRegalo(c));	
 		}
 		return resultado;
 	}

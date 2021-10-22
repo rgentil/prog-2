@@ -1,0 +1,20 @@
+Va un resumen
+
+Vendedor
+getGananciaTotal() pregunta por getCantidad() en lugar de getGanancia(). Igualmente parece un error mas de tipeo que de concepto, ya que el getGananciaPorPeriodo lo hizo bien y la estructura general del metodo esta bien
+Venta-Producto
+Tiene una clase Venta y una clase Producto. La Venta tiene un Producto dentro. Deberia estar todo en una misma clase.Despues en general bien. Si bien no era necesario delega bien en cada uno de los elementos, el producto tiene el codigo y el precio en venta la cantidad.
+
+Empresa
+
+Bien todo lo de rankear, tiene un atributo Comparador, hizo el set y tambien el metodo rankear() esta bien.
+El listar y ordenar esta bien. Hace un comparadorCompuesto, un comparadorApellido y un comparadorEdad y el sort. Lo mejor hubiera sido hacerlo comparable a Vendedor
+Error grave: un metodo por cada "listado" que se pide en la consigna, en lugar de utilizar solo el Buscar(Criterio). Hace los new de los Criterios adentro de los metodos y llama al Buscar generico. Esto solo es ejemplos del main (lo que hablamos en la clase el martes)
+
+Comparadores
+
+Grave: Tiene una clase Comparador totalmente innecesaria, ya que solo implementa a Comparator<Vendedor> y tiene el compare() abstracto, pero no abstrae las fechas. Las demás extienden a Comparador.
+Detalle: Con hacer la resta cuando son números, alcanza. Por ej en lugar de usar el Integer.compare se puede hacer v1.getEdad() - v2.GetEdad() y listo.
+El resto en general bien
+
+Bien el manejo de fechas, Vendedor no es comparable crea comparadores para ordenar

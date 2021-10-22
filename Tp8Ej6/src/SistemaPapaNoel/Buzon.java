@@ -3,7 +3,7 @@ package SistemaPapaNoel;
 import java.util.ArrayList;
 import java.util.List;
 
-import Criterios.CriterioPorRegalo;
+import Criterios.Criterio;
 
 public class Buzon extends EntidadNavidad{
 //Cada niño deposita su carta en el buzón correspondiente a su barrio. 
@@ -56,11 +56,10 @@ public class Buzon extends EntidadNavidad{
 	}
 
 	@Override
-	public List<Carta> getCartasRecibidasPorRegalo(String regalo) {
+	public List<Carta> getCartasRecibidasPorRegalo(Criterio c) {
 		List<Carta> resultado = new ArrayList<Carta>();
-		CriterioPorRegalo criterio = new CriterioPorRegalo(regalo);
 		for(Carta carta :cartas) {
-			if (criterio.cumple(carta)) {
+			if (c.cumple(carta)) {
 				resultado.add(carta);
 			}
 		}

@@ -2,7 +2,7 @@ package Criterios;
 
 import SistemaPapaNoel.Carta;
 
-public class CriterioPorRegalo {
+public class CriterioPorRegalo extends Criterio {
 	
 	private String regalo;
 	
@@ -11,6 +11,7 @@ public class CriterioPorRegalo {
 		this.regalo = regalo;
 	}
 
+	@Override
 	public boolean cumple(Carta c) {
 		return c.tieneRegalo(regalo);
 	}
