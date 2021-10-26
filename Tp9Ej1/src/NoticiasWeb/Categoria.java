@@ -52,8 +52,7 @@ public class Categoria extends ElementoWeb {
 	public boolean tieneElementos() {
 		return !this.elementos.isEmpty();
 	}
-	
-	
+		
 	@Override
 	public ElementoWeb copia() {
 		Categoria copia = new Categoria(this.getNombre(), this.getDescripcion(),this.descripcion);
