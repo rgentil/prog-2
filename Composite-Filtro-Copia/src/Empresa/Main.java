@@ -1,11 +1,12 @@
 package Empresa;
 
-import comparadores.*;
-import filtros.*;
-
 import java.util.ArrayList;
-import java.util.Comparator;
 
+import filtros.Filtro;
+import filtros.FiltroAnd;
+import filtros.FiltroEspecialidad;
+import filtros.FiltroNot;
+import filtros.FiltroSueldoMayor;
 public class Main {
     public static void main(String[] args) {
         Empleado juan = new Empleado("Juan", "Perez", "Java", 150000.50);
@@ -43,16 +44,16 @@ public class Main {
         sucQuequen.add(estrella);
 
 
-        ComparadorSueldo cSueldo = new ComparadorSueldo();
-        ComparadorInverso cSueldoInv = new ComparadorInverso(cSueldo);
+        //ComparadorSueldo cSueldo = new ComparadorSueldo();
+        //ComparadorInverso cSueldoInv = new ComparadorInverso(cSueldo);
         Filtro sabenJava = new FiltroEspecialidad("Java");
         ArrayList<Empleado> empJava = empresa.empleadosCon(sabenJava);
         System.out.println(empJava);
 
-        ComparadorNombre cNombre = new ComparadorNombre();
-        ComparadorApellido cApellido = new ComparadorApellido();
-        Comparator<Empleado> nomSueldo = new ComparadorCompuesto(cNombre, cSueldoInv);
-        Comparator<Empleado> apellidoNombreSueldo = new ComparadorCompuesto(cApellido,nomSueldo);
+        //ComparadorNombre cNombre = new ComparadorNombre();
+        //ComparadorApellido cApellido = new ComparadorApellido();
+        //Comparator<Empleado> nomSueldo = new ComparadorCompuesto(cNombre, cSueldoInv);
+        //Comparator<Empleado> apellidoNombreSueldo = new ComparadorCompuesto(cApellido,nomSueldo);
 
         ArrayList<Empleado> empJava2 = empresa.empleadosCon(sabenJava);
         System.out.println(empJava2);

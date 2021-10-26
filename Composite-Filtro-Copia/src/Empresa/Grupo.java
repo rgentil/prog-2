@@ -1,10 +1,8 @@
 package Empresa;
 
-import filtros.Filtro;
-
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+
+import filtros.Filtro;
 
 public class Grupo extends ElementoEmpresa {
     private String nombre;
@@ -64,6 +62,7 @@ public class Grupo extends ElementoEmpresa {
     public boolean tieneElementos(){
         return !elementos.isEmpty();
     }
+    
     @Override
     public ElementoEmpresa copia(Filtro f) {
         Grupo copia = new Grupo(this.getNombre());

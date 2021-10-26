@@ -1,10 +1,10 @@
 package Empresa;
 
-import filtros.Filtro;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
+import filtros.Filtro;
 
 public abstract class ElementoEmpresa {
 
@@ -16,7 +16,7 @@ public abstract class ElementoEmpresa {
     public abstract ElementoEmpresa copia(Filtro condicion);
 
     public ArrayList<Empleado> empleadosCon(Filtro fi, Comparator<Empleado> c) {
-        ArrayList temp = this.empleadosCon(fi);
+        ArrayList<Empleado> temp = this.empleadosCon(fi);
         Collections.sort(temp, c);
         return temp;
     }

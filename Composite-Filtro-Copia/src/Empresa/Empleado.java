@@ -1,9 +1,8 @@
 package Empresa;
 
-import filtros.Filtro;
-
 import java.util.ArrayList;
-import java.util.Locale;
+
+import filtros.Filtro;
 
 public class Empleado extends ElementoEmpresa {
     private String nombre;

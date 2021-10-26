@@ -1,6 +1,7 @@
 //A Java program to demonstrate Comparator interface
-import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
  
 // A class 'Movie' that implements Comparable
 class Movie implements Comparable<Movie>
