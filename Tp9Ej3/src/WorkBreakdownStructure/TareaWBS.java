@@ -14,7 +14,7 @@ public abstract class TareaWBS {
 	
 	public TareaWBS() {
 		super();
-		this.estado = Util.EN_ESPERA;;
+		this.estado = Util.EN_ESPERA;
 	}
 	
 	public String getEstado() {

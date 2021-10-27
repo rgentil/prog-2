@@ -1,8 +1,10 @@
 package Comparadores;
 
+import java.util.Comparator;
+
 import Plataforma.Pelicula;
 
-public class ComparadorPorTitulo extends Comparador{
+public class ComparadorPorTitulo implements Comparator<Pelicula>{
 
 	public ComparadorPorTitulo() {
 		// TODO Auto-generated constructor stub

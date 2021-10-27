@@ -1,30 +1,25 @@
 package WorkBreakdownStructure;
 
-public class Recurso {
+public abstract class Recurso {
 
 	private String nombre;
 	private String tipo;
-	private String estado;
 	
 	public Recurso(String nombre, String tipo) {
 		this.nombre = nombre;
 		this.tipo = tipo;
-		this.estado = Util.LIBRE;
 	}
 
 	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		if (this.tipo.equals(Util.EXCLUSIVO))
-			this.estado = estado;
+		return Util.LIBRE;
 	}
 	
+	public abstract void setEstado(String estado);
+	
 	public boolean noEstaOcupado() {
-		return getEstado().equals(Util.LIBRE);
+		return false;
 	}
-
+	
 	@Override
 	public boolean equals(Object o) {
 		try {
@@ -50,5 +45,7 @@ public class Recurso {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	
 	
 }

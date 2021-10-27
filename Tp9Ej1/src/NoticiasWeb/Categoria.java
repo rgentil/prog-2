@@ -102,7 +102,7 @@ public class Categoria extends ElementoWeb {
 			List<String> n = elementoWeb.listar();
 			for(String s:n) {
 				 aux.add(this.getNombre() + "/" + s + "\n");
-			 }
+			}
 		}
 		return aux;
 	}

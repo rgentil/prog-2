@@ -1,13 +1,15 @@
 package Comparadores;
 
+import java.util.Comparator;
+
 import Plataforma.Pelicula;
 
-public class ComparadorCompuesto extends Comparador{
+public class ComparadorCompuesto implements Comparator<Pelicula>{
 
-	private Comparador c1;
-	private Comparador c2;
+	private Comparator<Pelicula> c1;
+	private Comparator<Pelicula> c2;
 	
-	public ComparadorCompuesto(Comparador c1, Comparador c2) {
+	public ComparadorCompuesto(Comparator<Pelicula> c1, Comparator<Pelicula> c2) {
 		this.c1 = c1;
 		this.c2 = c2;
 	}

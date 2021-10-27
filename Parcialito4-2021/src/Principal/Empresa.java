@@ -3,6 +3,7 @@ package Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import Comparadores.Comparador;
@@ -14,7 +15,7 @@ public class Empresa {
 	private String nombre;
 	private List<Vendedor> vendedores;
 
-	private Comparador metodoRankeador;
+	private Comparator<Vendedor> metodoRankeador;
 	
 	public Empresa(String nombre, Comparador rankeador) {
 		this.nombre = nombre;
