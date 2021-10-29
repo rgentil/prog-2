@@ -66,7 +66,6 @@ public class Categoria extends ElementoWeb {
 	public ElementoWeb copia(Filtro filtro) {
 		//Creo lo que voy a devolver si alguno de mis hijos cumple la condicion
 		Categoria copia = new Categoria(this.getNombre(), this.getDescripcion(),this.descripcion);
-		
 		//Recorre mis hijos
 		for (ElementoWeb elementoWeb : elementos) {
 			//Consulto para cada metodo copia con el filtro
@@ -76,11 +75,11 @@ public class Categoria extends ElementoWeb {
 			if (aux != null) {
 				//le agrego a la copia el elemento
 				copia.addElemento(aux);
-			}
-			//y si tiene elementos la copia la devuelvo, sino null
-			if (copia.tieneElementos()) {
-				return copia;
-			}			
+			}					
+		}
+		//y si tiene elementos la copia la devuelvo, sino null
+		if (copia.tieneElementos()) {
+			return copia;
 		}
 		return null;
 	}
@@ -97,7 +96,7 @@ public class Categoria extends ElementoWeb {
 	@Override
 	public List<String> listar() {
 		List<String> aux = new ArrayList<>();
-		aux.add(this.getNombre() + "\n");
+		aux.add(this.getNombre());
 		for (ElementoWeb elementoWeb : elementos) {
 			List<String> n = elementoWeb.listar();
 			for(String s:n) {

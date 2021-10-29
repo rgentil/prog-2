@@ -46,6 +46,4 @@ public abstract class Recurso {
 		this.tipo = tipo;
 	}
 	
-	
-	
 }
