@@ -3,12 +3,6 @@ package Entidades;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-	De los participantes, se registra su
-		nombre, apellido, edad, géneros musicales de preferencia, idiomas en los que
-		canta y los instrumentos que toca. 
-  
-*/
 public class Participante {
 
 	private String nombre, apellido;
@@ -25,12 +19,12 @@ public class Participante {
 		this.instrumentosToca = new ArrayList<String>();		
 	}
 	
-	public boolean noTieneInstrumento(String instrumento) {
+	public boolean tocaInstrumento(String instrumento) {
 		return this.instrumentosToca.contains(instrumento);
 	}
 	
 	public void addInstrumento(String instrumento) {
-		if (!noTieneInstrumento(instrumento)) {
+		if (!tocaInstrumento(instrumento)) {
 			this.instrumentosToca.add(instrumento);
 		}
 	}
@@ -38,6 +32,35 @@ public class Participante {
 	public List<String> getInstrumentos() {
 		return new ArrayList<String>(this.instrumentosToca);
 	}
+	
+	public List<String> getIdiomas() {
+		return new ArrayList<String>(this.idiomasCanta);
+	}
+	
+	public List<String> getGeneros() {
+		return new ArrayList<String>(this.generosPreferencia);
+	}
+	
+	public boolean tieneGenero(String genero) {
+		return this.generosPreferencia.contains(genero);
+	}
+	
+	public void addGeneroPreferencia(String genero) {
+		if (!tieneGenero(genero)) {
+			this.generosPreferencia.add(genero);
+		}
+	}
+	
+	public boolean sabeIdioma(String idioma) {
+		return this.idiomasCanta.contains(idioma);
+	}
+	
+	public void addIdioma(String idioma) {
+		if (!sabeIdioma(idioma)) {
+			this.idiomasCanta.add(idioma);
+		}
+	}
+
 	
 	@Override
 	public boolean equals(Object o) {

@@ -3,10 +3,6 @@ package Entidades;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-	Cada tema musical tiene un título, un idioma, una lista de géneros musicales a los que pertenece y una
-	lista de instrumentos musicales necesarios para interpretarlo durante el concurso (puede ser vacía). 
-*/
 public class TemaMusical {
 	
 	private String titulo, idioma;
@@ -17,6 +13,26 @@ public class TemaMusical {
 		this.idioma = idioma;
 		this.generosMusicales = new ArrayList<String>();
 		this.instrumentosNecesarios = new ArrayList<String>();
+	}
+	
+	private boolean tieneGenero(String genero) {
+		return this.generosMusicales.contains(genero);
+	}
+	
+	public void addGeneroMusical(String genero) {
+		if (!tieneGenero(genero)) {
+			this.generosMusicales.add(genero);
+		}
+	}
+	
+	private boolean tieneInstrumento(String instrumento) {
+		return this.instrumentosNecesarios.contains(instrumento);
+	}
+	
+	public void addInstrumento(String instrumento) {
+		if (!tieneInstrumento(instrumento)) {
+			this.instrumentosNecesarios.add(instrumento);
+		}
 	}
 
 	public String getTitulo() {
