@@ -34,6 +34,14 @@ public class TemaMusical {
 			this.instrumentosNecesarios.add(instrumento);
 		}
 	}
+	
+	public List<String> getGenerosMusicales() {
+		return new ArrayList<String>(this.generosMusicales);
+	}
+	
+	public List<String> getInstrumentosNecesarios() {
+		return new ArrayList<String>(this.instrumentosNecesarios);
+	}
 
 	public String getTitulo() {
 		return titulo;

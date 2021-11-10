@@ -1,13 +1,13 @@
 package Comportamientos;
 
-import Entidades.Participante;
+import Participantes.ElementoEquipo;
 
 public class ComportamientoRegular extends ComportamientoCoach {
 
 	public ComportamientoRegular() {}
 
 	@Override
-	public boolean cumple(Participante p) {
+	public boolean cumple(ElementoEquipo p) {
 		return true;
 	}
 

@@ -5,12 +5,14 @@ import java.util.List;
 import Comportamientos.ComportamientoCoach;
 import Comportamientos.ComportamientoRegular;
 import Filtros.Filtro;
+import Participantes.ElementoEquipo;
+import Participantes.Participantes;
 
 public class Coach {
 
 	private String nombre, apellido;
 	private Participantes participantes;
-	//Comportamiento dinámico del coach
+	//Comportamiento dinámico del coach Patron Strategy
 	private ComportamientoCoach comportamiento;
 	
 	public Coach(String nombre, String apellido) {
@@ -20,9 +22,9 @@ public class Coach {
 		this.comportamiento = new ComportamientoRegular();
 	}
 
-	public void addParticipante(Participante nuevo) {
+	public void addParticipante(ElementoEquipo nuevo) {
 		if (this.comportamiento.cumple(nuevo)) {
-			this.participantes.addParticipante(nuevo);
+			participantes.addParticipante(nuevo);
 		}
 	}
 	
@@ -31,17 +33,17 @@ public class Coach {
 	}
 	
 	//● Listado de todos los instrumentos que pueden tocar los participantes de su equipo (no debe haber repetidos)
-	public List<String> getTotalIntrumentosDelEquipo(){
-		return participantes.getTotalInstrumentos();
+	public List<String> getIntrumentos(){
+		return participantes.getIntrumentos();
 	}
 	
 	//● Listado de todos los idiomas que pueden cantar los participantes de su equipo (sin idiomas repetidos)
-	public List<String> getIdiomasDelEquipo(){
+	public List<String> getIdiomas(){
 		return participantes.getIdiomas();
 	}
 	
 	//● Listado de géneros de preferencia de los participantes de su equipo (sin repetidos y ordenados alfabéticamente)
-	public List<String> getGenerosPreferenciaDelEquipo(){
+	public List<String> getGeneros(){
 		return participantes.getGeneros();
 	}
 	
@@ -49,17 +51,17 @@ public class Coach {
 	public double getPromedioEdad() {
 		return participantes.getPromedioEdad();
 	}
-	
-	//● Todos los participantes que canten en un determinado idioma, por ejemplo “inglés”.
-	//● Todos los participantes que prefieran un determinado género, por ejemplo “rock”.
-	//● Todos los participantes que canten en un determinado idioma y toquen un instrumento específico.Por ejemplo, “Aleman” y “Guitarra”
-	//● Todos los participantes que toquen “guitarra” y prefieran el género “balada” o que canten en “inglés”.
-	//● Todos los participantes mayores de una determinada edad.
-	//● Los anteriores son algunos ejemplos de los listados que la producción le pide
-	//constantemente a los jurados. Se pueden agregar nuevos requerimientos de búsquedas así
-	//como combinación lógicas de los existentes.
-	
-	public List<Participante> buscarParticipantes(Filtro criterio){
+	/*
+	● Canten en un determinado idioma, por ejemplo “inglés”
+	● Prefieren un determinado género, por ejemplo “rock”.
+	● Canten en un determinado idioma y toquen un instrumento específico. Por ejemplo, “Aleman”	y “Guitarra”
+	● Todos los participantes mayores de una determinada edad.
+	● Puedan Interpretar un determinado Tema Musical
+	● Los anteriores son algunos ejemplos de los listados que la producción le pide
+	constantemente a los jurados. Se pueden agregar nuevos requerimientos de búsquedas así
+	como combinación lógicas de los existentes.
+	*/
+	public List<ElementoEquipo> buscarParticipantes(Filtro criterio){
 		return participantes.buscar(criterio);
 	}
 	

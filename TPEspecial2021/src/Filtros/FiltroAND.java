@@ -1,6 +1,6 @@
 package Filtros;
 
-import Entidades.Participante;
+import Participantes.ElementoEquipo;
 
 public class FiltroAND extends Filtro {
 
@@ -13,7 +13,7 @@ public class FiltroAND extends Filtro {
 	}
 
 	@Override
-	public boolean cumple(Participante participante) {
+	public boolean cumple(ElementoEquipo participante) {
 		return filtro1.cumple(participante) && filtro2.cumple(participante);
 	}
 

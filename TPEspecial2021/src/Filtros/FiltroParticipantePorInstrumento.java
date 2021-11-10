@@ -1,6 +1,6 @@
 package Filtros;
 
-import Entidades.Participante;
+import Participantes.ElementoEquipo;
 
 public class FiltroParticipantePorInstrumento extends Filtro {
 
@@ -11,7 +11,7 @@ public class FiltroParticipantePorInstrumento extends Filtro {
 	}
 
 	@Override
-	public boolean cumple(Participante participante) {
+	public boolean cumple(ElementoEquipo participante) {
 		return participante.tocaInstrumento(instrumento);
 	}
 }

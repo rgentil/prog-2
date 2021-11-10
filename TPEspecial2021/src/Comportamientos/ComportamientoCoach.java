@@ -1,8 +1,8 @@
 package Comportamientos;
 
-import Entidades.Participante;
+import Participantes.ElementoEquipo;
 
 public abstract class ComportamientoCoach {
 	
-	public abstract boolean cumple(Participante p);
+	public abstract boolean cumple(ElementoEquipo p);
 }
