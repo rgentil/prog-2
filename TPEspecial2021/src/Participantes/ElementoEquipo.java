@@ -30,11 +30,11 @@ public abstract class ElementoEquipo {
 	
 	public abstract void addParticipante(ElementoEquipo nuevo);
 	
-	public abstract boolean tieneGenero(String genero);
-	
 	public abstract boolean tocaInstrumento(String instrumento);
 	
 	public abstract boolean sabeIdioma(String idioma);
+	
+	public abstract boolean tieneGenero(String genero);
 	
 	public abstract List<ElementoEquipo> buscar(Filtro filtro);
 	

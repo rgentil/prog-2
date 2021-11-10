@@ -1,7 +1,6 @@
 package Participantes;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import Filtros.Filtro;
@@ -14,7 +13,7 @@ public class Grupo extends ElementoEquipo {
 		super(nombre);
 		this.participantes = new ArrayList<ElementoEquipo>();
 	}
-	
+		
 	//Promedio de las edades de cada uno de sus miembros para saber la edad
 	@Override
 	public int getEdad() {
@@ -38,38 +37,41 @@ public class Grupo extends ElementoEquipo {
 		return aux;
 	}
 	
-	@Override
-	public boolean tieneGenero(String genero) {
-		boolean resultado = true;
-		for (ElementoEquipo participante : participantes) {
-			if (!participante.tieneGenero(genero)) {
-				//Si al menos uno no tiene el genero retorna false
-				return false;
-			}
-		}
-		return resultado;
-	}
-	
 	//Intersección de los géneros de preferencia de todos sus miembros
 	@Override
 	public List<String> getGeneros() {
 		List<String> resultado = new ArrayList<String>();
-		for (ElementoEquipo participante : participantes) {
-			List<String> generos = participante.getGeneros();
-			for (String genero : generos) {
-				if (this.tieneGenero(genero)) {
-					if (!resultado.contains(genero)) {//Sin repetir
-						resultado.add(genero);
-					}	
+		if (!vacio()) {
+			List<String> generosPrincipales = this.getPrimero().getGeneros();
+			for(String generoPrincipal : generosPrincipales) {
+				boolean agregarGenero = true;
+				for (ElementoEquipo participante : participantes) {
+					List<String> generosSiguientes = participante.getGeneros();
+					if(!generosSiguientes.contains(generoPrincipal)) {
+						agregarGenero = false;
+						break;
+					}
 				}
-			}			
-		}
-		
-		if (!resultado.isEmpty()) {//Ordenado
-			Collections.sort(resultado);
-		}
-		
+				if (agregarGenero) {
+					if (!resultado.contains(generoPrincipal)) {
+						resultado.add(generoPrincipal);
+					}
+				}
+			}	
+		}	
 		return resultado;
+	}
+	
+	private boolean vacio() {
+		return this.participantes.isEmpty();
+	}
+	
+	private ElementoEquipo getPrimero() {
+		if (!vacio()) {
+			return this.participantes.get(0);
+		}else {
+			return null;
+		}
 	}
 	
 	//En el caso de los idiomas que pueden interpretar una banda o grupo se considera la unión
@@ -166,6 +168,12 @@ public class Grupo extends ElementoEquipo {
 			}
 		}
 		return resultado;	
+	}
+	
+	@Override
+	public boolean tieneGenero(String genero) {
+		List<String> generos = this.getGeneros();//this porque llamo al metodo en la clase Grupo;
+		return generos.contains(genero);
 	}
 	
 	@Override

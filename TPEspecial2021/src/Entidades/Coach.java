@@ -1,31 +1,36 @@
 package Entidades;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import Comportamientos.ComportamientoCoach;
 import Comportamientos.ComportamientoRegular;
 import Filtros.Filtro;
 import Participantes.ElementoEquipo;
-import Participantes.Participantes;
 
 public class Coach {
 
 	private String nombre, apellido;
-	private Participantes participantes;
+	private List<ElementoEquipo> equipos;
 	//Comportamiento dinámico del coach Patron Strategy
 	private ComportamientoCoach comportamiento;
 	
 	public Coach(String nombre, String apellido) {
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.participantes = new Participantes();
+		this.equipos = new ArrayList<ElementoEquipo>(); 
 		this.comportamiento = new ComportamientoRegular();
 	}
 
-	public void addParticipante(ElementoEquipo nuevo) {
-		if (this.comportamiento.cumple(nuevo)) {
-			participantes.addParticipante(nuevo);
+	public boolean addParticipante(ElementoEquipo nuevo) {
+		if (nuevo != null) {
+			if (this.comportamiento.cumple(nuevo)) {
+				equipos.add(nuevo);
+				return true;
+			}
 		}
+		return false;
 	}
 	
 	public void setComportamiento(ComportamientoCoach nuevoComportamiento) {
@@ -34,22 +39,72 @@ public class Coach {
 	
 	//● Listado de todos los instrumentos que pueden tocar los participantes de su equipo (no debe haber repetidos)
 	public List<String> getIntrumentos(){
-		return participantes.getIntrumentos();
+		List<String> resultado = new ArrayList<String>();
+		for (ElementoEquipo equipo : equipos) {
+			List<String> instrumentos = equipo.getInstrumentos();
+			for (String instrumento : instrumentos) {
+				if (!resultado.contains(instrumento)) {
+					resultado.add(instrumento);
+				}
+			}
+		}
+		return resultado;
 	}
 	
 	//● Listado de todos los idiomas que pueden cantar los participantes de su equipo (sin idiomas repetidos)
 	public List<String> getIdiomas(){
-		return participantes.getIdiomas();
+		List<String> resultado = new ArrayList<String>();
+		for (ElementoEquipo equipo : equipos) {
+			List<String> idiomas = equipo.getIdiomas();
+			for (String idioma : idiomas) {
+				if (!resultado.contains(idioma)) {
+					resultado.add(idioma);
+				}
+			}
+		}
+		return resultado;
 	}
 	
 	//● Listado de géneros de preferencia de los participantes de su equipo (sin repetidos y ordenados alfabéticamente)
 	public List<String> getGeneros(){
-		return participantes.getGeneros();
+		List<String> resultado = new ArrayList<String>();
+		for (ElementoEquipo equipo : equipos) {
+			List<String> generos = equipo.getGeneros();
+			for (String genero : generos) {
+				if (!resultado.contains(genero)) {
+					resultado.add(genero);
+				}
+			}
+		}
+		
+		if (!resultado.isEmpty()) {//Ordenado
+			Collections.sort(resultado);
+		}		
+		return resultado;
+	}
+	
+	private boolean vacio() {
+		return equipos.isEmpty();
+	}
+	
+	private int totalEquipos() {
+		return equipos.size();
 	}
 	
 	//● El promedio de edad de su equipo
 	public double getPromedioEdad() {
-		return participantes.getPromedioEdad();
+		double resultado = 0;
+		if (!this.vacio()) {
+			for (ElementoEquipo equipo : equipos) {
+				//resultado =+ equipo.getPromedioEdad();
+				//Es el promedio del promedio
+				resultado =+ equipo.getEdad();
+			}
+			if (resultado != 0) {
+				return resultado / this.totalEquipos(); 
+			}
+		}
+		return resultado;
 	}
 	/*
 	● Canten en un determinado idioma, por ejemplo “inglés”
@@ -62,7 +117,13 @@ public class Coach {
 	como combinación lógicas de los existentes.
 	*/
 	public List<ElementoEquipo> buscarParticipantes(Filtro criterio){
-		return participantes.buscar(criterio);
+		List<ElementoEquipo> resultado = new ArrayList<ElementoEquipo>();
+		for (ElementoEquipo equipo : equipos) {
+			if (criterio.cumple(equipo)) {
+				resultado.add(equipo);
+			}
+		}
+		return resultado;
 	}
 	
 	@Override
@@ -77,7 +138,7 @@ public class Coach {
 
 	@Override
 	public String toString() {
-		return "\nCoach [nombre=" + nombre + ", apellido=" + apellido + ", participantes=" + participantes + "]";
+		return "\nCoach [nombre=" + nombre + ", apellido=" + apellido + ", equipos=" + equipos + "]";
 	}
 
 	public String getNombre() {
