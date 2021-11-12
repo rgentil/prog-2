@@ -1,6 +1,6 @@
 package Filtros;
 
-import Participantes.ElementoEquipo;
+import Entidades.ElementoEquipo;
 
 public class FiltroParticipantePorIdioma extends Filtro {
 
@@ -12,6 +12,6 @@ public class FiltroParticipantePorIdioma extends Filtro {
 
 	@Override
 	public boolean cumple(ElementoEquipo participante) {
-		return participante.sabeIdioma(idioma);
+		return participante.getIdiomas().contains(idioma);
 	}
 }

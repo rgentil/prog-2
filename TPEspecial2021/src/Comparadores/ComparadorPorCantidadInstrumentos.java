@@ -2,13 +2,13 @@ package Comparadores;
 
 import java.util.Comparator;
 
-import Participantes.ElementoEquipo;
+import Entidades.ElementoEquipo;
 
 public class ComparadorPorCantidadInstrumentos implements Comparator<ElementoEquipo>{
 
 	@Override
 	public int compare(ElementoEquipo equipo1, ElementoEquipo equipo2) {
-		return Integer.compare(equipo1.getTotalInstrumentos(),equipo2.getTotalInstrumentos());
+		return equipo1.getInstrumentos().size() - equipo2.getInstrumentos().size();
 	}
 
 }

@@ -1,8 +1,11 @@
-package Participantes;
+package Entidades;
 
 import java.util.List;
 
 import Filtros.Filtro;
+
+// Los participantes pueden estar organizados en grupos y bandas, un grupo o banda posee una lista de miembros que los componen 
+// (pueden ser integrantes o incluso sub bandas). Una banda o grupo posee un nombre, yuna edad.
 
 public abstract class ElementoEquipo {
 
@@ -12,29 +15,17 @@ public abstract class ElementoEquipo {
 		this.nombre = nombre;		
 	}
 	
+//	Edad (la cual se calcula como el promedio de las edades de cada uno de sus miembros).
 	public abstract int getEdad();
 	
-	public abstract int getTotalIntegrantesParticipantes();
+	public abstract int getTotalIntegrantes();
 	
+//	Los géneros de preferencia se calculan como la intersección de los géneros de preferencia de todos sus miembros
 	public abstract List<String> getGeneros();
-	
-	public abstract int getTotalGeneros();
 	
 	public abstract List<String> getIdiomas();
 	
-	public abstract int getTotalIdiomas();
-	
 	public abstract List<String> getInstrumentos();
-	
-	public abstract int getTotalInstrumentos();
-	
-	public abstract void addParticipante(ElementoEquipo nuevo);
-	
-	public abstract boolean tocaInstrumento(String instrumento);
-	
-	public abstract boolean sabeIdioma(String idioma);
-	
-	public abstract boolean tieneGenero(String genero);
 	
 	public abstract List<ElementoEquipo> buscar(Filtro filtro);
 	

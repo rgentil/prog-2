@@ -1,47 +1,26 @@
 package Entidades;
 
-import CondicionesDeBatalla.CondicionBatallaPersonal;
-import Participantes.ElementoEquipo;
+import java.util.Comparator;
 
 public class Batalla {
 
-	private ElementoEquipo equipo1;
-	private ElementoEquipo equipo2;
-	private CondicionBatalla condicionBatalla;
+	private Comparator<ElementoEquipo> reglasDeBatalla;
 	
-	public Batalla(ElementoEquipo equipo1, ElementoEquipo equipo2, CondicionBatallaPersonal condicionPersonal) {
-		super();
-		this.equipo1 = equipo1;
-		this.equipo2 = equipo2;
-		this.condicionPersonal = condicionPersonal;
+	public Batalla(Comparator<ElementoEquipo> reglasDeBatalla) {
+		this.reglasDeBatalla = reglasDeBatalla;
 	}
 	
-	public int CompetirPersonal() {
-		return condicionPersonal.resultado();
+	public void setReglasDeBatalla(Comparator<ElementoEquipo> reglasDeBatalla) {
+		this.reglasDeBatalla = reglasDeBatalla;
 	}
-
-	public ElementoEquipo getEquipo1() {
-		return equipo1;
+	
+	public ElementoEquipo getGanador(ElementoEquipo participante1, ElementoEquipo participante2) {
+		int resultado = reglasDeBatalla.compare(participante1, participante2);
+		if (resultado > 0)
+			return participante1;
+		if (resultado < 0) 
+			return participante2;
+		return null;//empate
 	}
-
-	public void setEquipo1(ElementoEquipo equipo1) {
-		this.equipo1 = equipo1;
-	}
-
-	public ElementoEquipo getEquipo2() {
-		return equipo2;
-	}
-
-	public void setEquipo2(ElementoEquipo equipo2) {
-		this.equipo2 = equipo2;
-	}
-
-	public CondicionBatallaPersonal getCondicionPersonal() {
-		return condicionPersonal;
-	}
-
-	public void setCondicionPersonal(CondicionBatallaPersonal condicionPersonal) {
-		this.condicionPersonal = condicionPersonal;
-	}	
 	
 }

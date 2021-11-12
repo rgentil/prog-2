@@ -3,7 +3,7 @@ package Filtros;
 import java.util.ArrayList;
 import java.util.List;
 
-import Participantes.ElementoEquipo;
+import Entidades.ElementoEquipo;
 
 public class FiltroParticipantePorGeneroLista extends Filtro {
 
@@ -20,7 +20,7 @@ public class FiltroParticipantePorGeneroLista extends Filtro {
 	@Override
 	public boolean cumple(ElementoEquipo participante) {
 		for (String genero : generos) {
-			if (participante.tieneGenero(genero)) {//Si tiene al menos uno, cumple.
+			if (participante.getGeneros().contains(genero)) {//Si tiene al menos uno, cumple.
 				return true;
 			}	
 		}

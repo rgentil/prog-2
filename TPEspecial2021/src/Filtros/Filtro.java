@@ -1,6 +1,6 @@
 package Filtros;
 
-import Participantes.ElementoEquipo;
+import Entidades.ElementoEquipo;
 
 public abstract class Filtro {
 	public abstract boolean cumple(ElementoEquipo participante);

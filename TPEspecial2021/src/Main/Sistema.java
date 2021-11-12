@@ -1,9 +1,9 @@
 package Main;
 
 import Entidades.Coach;
-import Participantes.ElementoEquipo;
-import Participantes.Grupo;
-import Participantes.Solista;
+import Entidades.ElementoEquipo;
+import Entidades.Grupo;
+import Entidades.Solista;
 
 public class Sistema {
 
@@ -13,12 +13,12 @@ public class Sistema {
 		ElementoEquipo participante2 = new Solista("Participante2", "Apellido1",18);
 		ElementoEquipo participante3 = new Solista("Participante3", "Apellido1",25);
 		Grupo grupo1 = new Grupo("Los Palmeras");
-		grupo1.addParticipante(participante1);
-		grupo1.addParticipante(participante2);
-		grupo1.addParticipante(participante3);
+		grupo1.addIntegrante(participante1);
+		grupo1.addIntegrante(participante2);
+		grupo1.addIntegrante(participante3);
 		
 		Grupo equipo1 = new Grupo("Equipo 1");
-		equipo1.addParticipante(grupo1);
+		equipo1.addIntegrante(grupo1);
 		
 		Coach coach1 = new Coach("Coach1","Apellido del coach");
 		

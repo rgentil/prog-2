@@ -1,6 +1,6 @@
 package Filtros;
 
-import Participantes.ElementoEquipo;
+import Entidades.ElementoEquipo;
 
 public class FiltroParticipantePorEdadMayor extends Filtro {
 

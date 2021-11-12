@@ -3,36 +3,37 @@ package Entidades;
 import java.util.ArrayList;
 import java.util.List;
 
+import Filtros.Filtro;
+import Filtros.FiltroPositivo;
+
 public class TemaMusical {
 	
 	private String titulo, idioma;
 	private List<String> generosMusicales, instrumentosNecesarios;
+	private Filtro condicionesDeInterpretacion;
 	
 	public TemaMusical(String titulo, String idioma) {
 		this.titulo = titulo;
 		this.idioma = idioma;
 		this.generosMusicales = new ArrayList<String>();
 		this.instrumentosNecesarios = new ArrayList<String>();
+		this.condicionesDeInterpretacion = new FiltroPositivo();
+		
 	}
 	
-	private boolean tieneGenero(String genero) {
-		return this.generosMusicales.contains(genero);
+	public boolean puedeInterpretarse(ElementoEquipo participante) {
+//		Filtro cantaIdioma = new FiltroParticipantePorIdioma(this.getIdioma());
+//		Filtro genero = new FiltroParticipantePorGeneroLista(this.getGenerosMusicales());
+//		return cantaIdioma.cumple(participante) && genero.cumple(participante);
+		return condicionesDeInterpretacion.cumple(participante);
 	}
 	
 	public void addGeneroMusical(String genero) {
-		if (!tieneGenero(genero)) {
-			this.generosMusicales.add(genero);
-		}
-	}
-	
-	private boolean tieneInstrumento(String instrumento) {
-		return this.instrumentosNecesarios.contains(instrumento);
+		this.generosMusicales.add(genero);
 	}
 	
 	public void addInstrumento(String instrumento) {
-		if (!tieneInstrumento(instrumento)) {
-			this.instrumentosNecesarios.add(instrumento);
-		}
+		this.instrumentosNecesarios.add(instrumento);
 	}
 	
 	public List<String> getGenerosMusicales() {

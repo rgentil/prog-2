@@ -1,4 +1,4 @@
-package Participantes;
+package Entidades;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class Solista extends ElementoEquipo {
 	}
 	
 	@Override
-	public int getTotalIntegrantesParticipantes() {
+	public int getTotalIntegrantes() {
 		return 1;
 	}
 	
@@ -43,21 +43,6 @@ public class Solista extends ElementoEquipo {
 	@Override
 	public List<String> getInstrumentos() {
 		return new ArrayList<String>(this.instrumentosToca);
-	}
-	
-	@Override
-	public int getTotalGeneros() {
-		return this.getGeneros().size();
-	}
-
-	@Override
-	public int getTotalIdiomas() {
-		return this.getIdiomas().size();
-	}
-
-	@Override
-	public int getTotalInstrumentos() {
-		return this.getInstrumentos().size();
 	}
 	
 	@Override
@@ -91,46 +76,22 @@ public class Solista extends ElementoEquipo {
 	public int getTotalDeInstrumentosRequeridosConocen(List<String> instrumentosNecesarios) {
 		int resultado = 0;
 		for (String instrumento : instrumentosNecesarios) {
-			if (this.tocaInstrumento(instrumento))
+			if (this.getInstrumentos().contains(instrumento))
 				resultado += 1;
 		}
 		return resultado;
 	}
 	
-	@Override
-	public void addParticipante(ElementoEquipo nuevo) {}
-	
-	@Override
-	public boolean tieneGenero(String genero) {
-		return this.generosPreferencia.contains(genero);
-	}
-	
 	public void addGeneroPreferencia(String genero) {
-		if (!tieneGenero(genero)) {
-			this.generosPreferencia.add(genero);
-		}
-	}
-	
-	@Override
-	public boolean tocaInstrumento(String instrumento) {
-		return this.instrumentosToca.contains(instrumento);
+		this.generosPreferencia.add(genero);
 	}
 	
 	public void addInstrumento(String instrumento) {
-		if (!tocaInstrumento(instrumento)) {
-			this.instrumentosToca.add(instrumento);
-		}
-	}
-	
-	@Override
-	public boolean sabeIdioma(String idioma) {
-		return this.idiomasCanta.contains(idioma);
+		this.instrumentosToca.add(instrumento);
 	}
 	
 	public void addIdioma(String idioma) {
-		if (!sabeIdioma(idioma)) {
-			this.idiomasCanta.add(idioma);
-		}
+		this.idiomasCanta.add(idioma);
 	}
 	
 	@Override

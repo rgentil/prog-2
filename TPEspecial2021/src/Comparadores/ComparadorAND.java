@@ -2,7 +2,7 @@ package Comparadores;
 
 import java.util.Comparator;
 
-import Participantes.ElementoEquipo;
+import Entidades.ElementoEquipo;
 
 public class ComparadorAND implements Comparator<ElementoEquipo>{
 

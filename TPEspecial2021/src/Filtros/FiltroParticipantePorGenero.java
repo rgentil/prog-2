@@ -1,6 +1,6 @@
 package Filtros;
 
-import Participantes.ElementoEquipo;
+import Entidades.ElementoEquipo;
 
 public class FiltroParticipantePorGenero extends Filtro {
 
@@ -12,6 +12,6 @@ public class FiltroParticipantePorGenero extends Filtro {
 
 	@Override
 	public boolean cumple(ElementoEquipo participante) {
-		return participante.tieneGenero(genero);
+		return participante.getGeneros().contains(genero);
 	}
 }
