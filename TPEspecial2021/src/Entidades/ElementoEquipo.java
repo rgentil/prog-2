@@ -39,7 +39,6 @@ public abstract class ElementoEquipo {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}	
-	
+	}
 
 }

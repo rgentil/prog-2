@@ -84,7 +84,7 @@ public class Coach {
 		if (!this.equipos.isEmpty()) {
 			for (ElementoEquipo equipo : equipos) {
 				//Es el promedio del promedio
-				resultado =+ equipo.getEdad();
+				resultado += equipo.getEdad();
 			}
 			if (resultado != 0) {
 				return resultado / this.equipos.size(); 
@@ -122,7 +122,7 @@ public class Coach {
 
 	@Override
 	public String toString() {
-		return "\nCoach [nombre=" + nombre + ", apellido=" + apellido + ", equipos=" + equipos + "]";
+		return "\nCoach " + nombre + " " + apellido + "\nEquipos\n" + equipos + "\n";
 	}
 
 	public String getNombre() {
@@ -140,5 +140,9 @@ public class Coach {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}	
+	
+	public String getNombreYApellido() {
+		return nombre + " " + apellido;
+	}
 
 }

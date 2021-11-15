@@ -17,6 +17,7 @@ public class TemaMusicalFinal extends TemaMusical {
 	}
 	
 	private boolean cumpleCondicionCantInterpretes(ElementoEquipo participante) {
+		if ( this.getInstrumentosNecesarios().isEmpty()) return true;
 		List<String> instrumentosParticipante = participante.getInstrumentos();
 		List<String> instrumentosNecesarios = this.getInstrumentosNecesarios();
 		instrumentosParticipante.retainAll(instrumentosNecesarios);

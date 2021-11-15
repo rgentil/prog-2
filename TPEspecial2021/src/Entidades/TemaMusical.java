@@ -60,4 +60,11 @@ public class TemaMusical {
 		this.idioma = idioma;
 	}
 
+	@Override
+	public String toString() {
+		return "Tema Musical " + titulo + "\n" ;
+	}
+	
+	
+
 }
