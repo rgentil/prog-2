@@ -20,7 +20,7 @@ public class TemaMusical {
 		this.condicionesDeInterpretacion = new FiltroPositivo();//Seteado por defecto en todo true
 	}
 	
-	public boolean puedeInterpretarse(ElementoEquipo participante) {
+	public boolean puedeInterpretarsePor(ElementoEquipo participante) {
 		return condicionesDeInterpretacion.cumple(participante);
 	}
 	

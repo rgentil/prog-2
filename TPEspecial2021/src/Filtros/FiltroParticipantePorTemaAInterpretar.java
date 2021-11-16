@@ -13,6 +13,6 @@ public class FiltroParticipantePorTemaAInterpretar extends Filtro {
 
 	@Override
 	public boolean cumple(ElementoEquipo participante) {
-		return temaMusical.puedeInterpretarse(participante);
+		return temaMusical.puedeInterpretarsePor(participante);
 	}
 }

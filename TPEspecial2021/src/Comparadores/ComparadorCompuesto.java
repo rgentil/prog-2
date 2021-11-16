@@ -4,12 +4,12 @@ import java.util.Comparator;
 
 import Entidades.ElementoEquipo;
 
-public class ComparadorAND implements Comparator<ElementoEquipo>{
+public class ComparadorCompuesto implements Comparator<ElementoEquipo>{
 
 	private Comparator<ElementoEquipo> c1;
 	private Comparator<ElementoEquipo> c2;
 	
-	public ComparadorAND(Comparator<ElementoEquipo> c1, Comparator<ElementoEquipo> c2) {
+	public ComparadorCompuesto(Comparator<ElementoEquipo> c1, Comparator<ElementoEquipo> c2) {
 		super();
 		this.c1 = c1;
 		this.c2 = c2;

@@ -108,12 +108,12 @@ public class Grupo extends ElementoEquipo {
 	}
 	
 	@Override
-	public int getTotalDeInstrumentosRequeridosConocen(List<String> instrumentosNecesarios) {
-		int resultado = 0;
+	public int cantParticipantesQueTocanElInstrumento(String instrumento) {
+		int total = 0;
 		for (ElementoEquipo participante : participantes) {
-			resultado += participante.getTotalDeInstrumentosRequeridosConocen(instrumentosNecesarios);
-		}	
-		return resultado;
+			total += participante.cantParticipantesQueTocanElInstrumento(instrumento);
+		}
+		return total;
 	}
 
 	@Override
@@ -130,5 +130,7 @@ public class Grupo extends ElementoEquipo {
 	public String toString() {
 		return super.getNombre() + "\n" + participantes+ "\n";
 	}
+
+
 
 }

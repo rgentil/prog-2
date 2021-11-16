@@ -12,7 +12,6 @@ public class Coach {
 
 	private String nombre, apellido;
 	private List<ElementoEquipo> equipos;
-//	Comportamiento dinámico del coach Patron Strategy
 	private Filtro requisitoIngreso;
 	
 	public Coach(String nombre, String apellido) {

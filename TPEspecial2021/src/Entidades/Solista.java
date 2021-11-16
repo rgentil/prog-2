@@ -72,16 +72,6 @@ public class Solista extends ElementoEquipo {
 		return solista;
 	}
 	
-	@Override
-	public int getTotalDeInstrumentosRequeridosConocen(List<String> instrumentosNecesarios) {
-		int resultado = 0;
-		for (String instrumento : instrumentosNecesarios) {
-			if (this.getInstrumentos().contains(instrumento))
-				resultado += 1;
-		}
-		return resultado;
-	}
-	
 	public void addGeneroPreferencia(String genero) {
 		this.generosPreferencia.add(genero);
 	}
@@ -116,6 +106,15 @@ public class Solista extends ElementoEquipo {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	}
+
+	@Override
+	public int cantParticipantesQueTocanElInstrumento(String instrumento) {
+		if (this.instrumentosToca.contains(instrumento)) {
+			return 1;
+		}else {
+			return 0;
+		}
 	}
 
 

@@ -5,7 +5,7 @@ import java.util.List;
 import Filtros.Filtro;
 
 // Los participantes pueden estar organizados en grupos y bandas, un grupo o banda posee una lista de miembros que los componen 
-// (pueden ser integrantes o incluso sub bandas). Una banda o grupo posee un nombre, yuna edad.
+// (pueden ser integrantes o incluso sub bandas). Una banda o grupo posee un nombre, y una edad.
 
 public abstract class ElementoEquipo {
 
@@ -31,7 +31,7 @@ public abstract class ElementoEquipo {
 	
 	public abstract ElementoEquipo getCopiaEstructura();
 	
-	public abstract int getTotalDeInstrumentosRequeridosConocen(List<String> instrumentosNecesarios);
+	public abstract int cantParticipantesQueTocanElInstrumento(String instrumento);
 	
 	public String getNombre() {
 		return nombre;

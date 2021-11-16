@@ -3,7 +3,7 @@ package Entidades;
 import java.util.Comparator;
 import java.util.List;
 
-import Comparadores.ComparadorAND;
+import Comparadores.ComparadorCompuesto;
 import Comparadores.ComparadorPorCantidadGeneros;
 import Comparadores.ComparadorPorCantidadIdiomas;
 import Comparadores.ComparadorPorCantidadInstrumentos;
@@ -227,10 +227,10 @@ public class Main {
 		reglaBatalla = new ComparadorPorCantidadGeneros();
 		
 //		● Si la cantidad de instrumentos que toca es mayor a la de su rival, y en caso de ser iguales se desempata por que que tiene mayor edad
-		reglaBatalla = new ComparadorAND(new ComparadorPorCantidadInstrumentos(), new ComparadorPorEdad());
+		reglaBatalla = new ComparadorCompuesto(new ComparadorPorCantidadInstrumentos(), new ComparadorPorEdad());
 		
 //		● Si la edad es mayor que la de su oponente y en caso de empate se decide por quién sabe más idiomas que su oponente
-		reglaBatalla = new ComparadorAND(new ComparadorPorEdad(), new ComparadorPorCantidadIdiomas());
+		reglaBatalla = new ComparadorCompuesto(new ComparadorPorEdad(), new ComparadorPorCantidadIdiomas());
 		
 //		Como los jurados no quieren perder una desean poder contar con un mecanismo que les permita
 //		dada la forma actual que se va a utilizar para determinar el ganador de una batalla, obtener un listado
