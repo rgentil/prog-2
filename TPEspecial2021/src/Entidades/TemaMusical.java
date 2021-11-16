@@ -17,15 +17,15 @@ public class TemaMusical {
 		this.idioma = idioma;
 		this.generosMusicales = new ArrayList<String>();
 		this.instrumentosNecesarios = new ArrayList<String>();
-		this.condicionesDeInterpretacion = new FiltroPositivo();
-		
+		this.condicionesDeInterpretacion = new FiltroPositivo();//Seteado por defecto en todo true
 	}
 	
 	public boolean puedeInterpretarse(ElementoEquipo participante) {
-//		Filtro cantaIdioma = new FiltroParticipantePorIdioma(this.getIdioma());
-//		Filtro genero = new FiltroParticipantePorGeneroLista(this.getGenerosMusicales());
-//		return cantaIdioma.cumple(participante) && genero.cumple(participante);
 		return condicionesDeInterpretacion.cumple(participante);
+	}
+	
+	public void setCondicionDeInterpretacion(Filtro condicionNueva) {
+		this.condicionesDeInterpretacion = condicionNueva;
 	}
 	
 	public void addGeneroMusical(String genero) {

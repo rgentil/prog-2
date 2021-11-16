@@ -1,11 +1,16 @@
 package Entidades;
 
 import java.util.Comparator;
+import java.util.List;
 
+import Comparadores.ComparadorAND;
+import Comparadores.ComparadorPorCantidadGeneros;
 import Comparadores.ComparadorPorCantidadIdiomas;
 import Comparadores.ComparadorPorCantidadInstrumentos;
+import Comparadores.ComparadorPorEdad;
 import Filtros.Filtro;
 import Filtros.FiltroAND;
+import Filtros.FiltroOR;
 import Filtros.FiltroParticipantePorEdadMayor;
 import Filtros.FiltroParticipantePorGenero;
 import Filtros.FiltroParticipantePorIdioma;
@@ -93,7 +98,6 @@ public class Main {
 		equipo4.addIntegrante(participante6);
 		equipo4.addIntegrante(participante7);
 		
-		
 		Coach coach2 = new Coach("Marcelo", "Tinelli");
 		coach2.addParticipante(equipo3);
 		coach2.addParticipante(equipo4);
@@ -109,6 +113,31 @@ public class Main {
 		TemaMusicalFinal temaFinal = new TemaMusicalFinal("A ver quien la sabe", "aleman",1);
 		temaFinal.addGeneroMusical("rock");
 		temaFinal.addInstrumento("bajo");
+		
+//		Un tema puede ser interpretado por una banda/grupo/solista si puede cantar en el idioma del
+//		tema y al menos uno de los géneros está entre las preferencias del grupo/banda/solista
+		Filtro condicionInterpretacion = new FiltroAND(new FiltroParticipantePorIdioma("ingles"), new FiltroParticipantePorGenero("balada"));
+		tema1.setCondicionDeInterpretacion(condicionInterpretacion);
+		
+//		Sin embargo, para los temas de la final se debe chequear además de lo anterior que la
+//		banda/grupo/solista posea al menos un miembro que toque un instrumento de los necesarios
+//		para interpretar el tema. Este requisito es más restrictivo para otros temas, que requieren, por
+//		ejemplo, 2 miembros o incluso 3, que sepan tocar algún instrumento necesario para
+//		interpretar el tema.
+		temaFinal.setCondicionDeInterpretacion(condicionInterpretacion);
+		temaFinal.setCantRestrictivoDeInterpretes(3);
+		
+//		El jurado exigente sigue existiendo solo que ahora solo permite agregar a su equipo participantes
+//		(solistas, grupos o bandas) que al menos toquen un determinado instrumento, conozcan ciertos
+//		idiomas y/o prefieran un determinado género. Por ejemplo, sólo permite agregar participantes que
+//		toquen la batería, puedan cantar en español e inglés, y que prefieran “pop”. Es posible que este
+//		jurado cambie en tiempo de ejecución su restricción para aceptar participantes, aunque los
+//		participantes ya aceptados no se eliminan si cambia su preferencia por nuevos participantes.
+		Filtro requisitoIngreso =new FiltroOR(
+				new FiltroAND(new FiltroParticipantePorInstrumento("guitarra"), new FiltroParticipantePorIdioma("ingles")),
+				new FiltroParticipantePorGenero("balada")) 
+				;
+		coach1.setRequisitoIngreso(requisitoIngreso);
 		
 //		● Un listado de todos los instrumentos que pueden tocar los participantes de su equipo (no
 //		debe haber repetidos)
@@ -173,6 +202,9 @@ public class Main {
 		
 		System.out.println("\n--------------------------------------------------------------------------------------------------------------\n");
 		
+//		Una batalla implica que dos participantes (sea banda, grupo o solista) se enfrenten entre sí (puede ser incluso un solista
+//		contra una banda). Si un participante gana una batalla contra otro participante se retorna 1, en el caso de empate un 0 y
+//		en el caso de que pierda un -1.
 		Comparator<ElementoEquipo> reglaBatalla = new ComparadorPorCantidadIdiomas();		
 		Batalla batalla = new Batalla( reglaBatalla);
 		System.out.println("Batalla entre " + equipo1 + "\n vs \n" + equipo3);
@@ -185,6 +217,27 @@ public class Main {
 		ganador = batalla.getGanador(equipo2, equipo4);
 		System.out.println("Ganador " +(ganador == null ? "Empate" : ganador));
 		
+//		Como la producción es medio caprichosa existen diferentes formas de poder
+//		determinar si un participante gana una batalla, que la producción puede cambiar en cualquier momento
+//		dependiendo del rating que está teniendo el programa:
+//		● Si la cantidad de instrumentos que toca es mayor que la de su oponente.
+		reglaBatalla = new ComparadorPorCantidadIdiomas();
+		
+//		● Si la cantidad de géneros preferidos es menor que la de su oponente.
+		reglaBatalla = new ComparadorPorCantidadGeneros();
+		
+//		● Si la cantidad de instrumentos que toca es mayor a la de su rival, y en caso de ser iguales se desempata por que que tiene mayor edad
+		reglaBatalla = new ComparadorAND(new ComparadorPorCantidadInstrumentos(), new ComparadorPorEdad());
+		
+//		● Si la edad es mayor que la de su oponente y en caso de empate se decide por quién sabe más idiomas que su oponente
+		reglaBatalla = new ComparadorAND(new ComparadorPorEdad(), new ComparadorPorCantidadIdiomas());
+		
+//		Como los jurados no quieren perder una desean poder contar con un mecanismo que les permita
+//		dada la forma actual que se va a utilizar para determinar el ganador de una batalla, obtener un listado
+//		de sus participantes ordenado de forma tal que los primeros miembros del listado sean los que les
+//		ganen o empaten con los siguientes miembros (siempre dentro del mismo equipo del juez).
+		List<ElementoEquipo> listadoOrdenado = coach1.getParticipantePorReglaBatalla(reglaBatalla);
+		System.out.println("Listado ordenado por regla de Batalla " + listadoOrdenado);
 		
 	}
 

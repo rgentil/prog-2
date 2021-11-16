@@ -106,7 +106,7 @@ public class Solista extends ElementoEquipo {
 
 	@Override
 	public String toString() {
-		return "\nMusico=" + this.getNombre() + " " + apellido + ", " + edad + " \n Generos="
+		return "\nMúsico=" + this.getNombre() + " " + apellido + ", " + edad + " \n Géneros="
 				+ generosPreferencia + "\n Idiomas=" + idiomasCanta + "\nInstrumentos=" + instrumentosToca;
 	}
 	

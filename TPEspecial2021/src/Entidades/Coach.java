@@ -2,6 +2,7 @@ package Entidades;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import Filtros.Filtro;
@@ -107,6 +108,16 @@ public class Coach {
 				resultado.add(equipo);
 			}
 		}
+		return resultado;
+	}
+	
+//	Como los jurados no quieren perder una desean poder contar con un mecanismo que les permita
+//	dada la forma actual que se va a utilizar para determinar el ganador de una batalla, obtener un listado
+//	de sus participantes ordenado de forma tal que los primeros miembros del listado sean los que les
+//	ganen o empaten con los siguientes miembros (siempre dentro del mismo equipo del juez).
+	public List<ElementoEquipo> getParticipantePorReglaBatalla(Comparator<ElementoEquipo> reglaBatalla){
+		List<ElementoEquipo> resultado = new ArrayList<ElementoEquipo>(equipos);
+		Collections.sort(resultado, reglaBatalla);
 		return resultado;
 	}
 	

@@ -128,7 +128,7 @@ public class Grupo extends ElementoEquipo {
 
 	@Override
 	public String toString() {
-		return "---- "+ super.getNombre() + "\n" + participantes+ "\n";
+		return super.getNombre() + "\n" + participantes+ "\n";
 	}
 
 }
